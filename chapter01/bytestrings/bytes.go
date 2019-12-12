@@ -9,7 +9,7 @@ import (
 // WorkWithBuffer will make use of the buffer create by the
 // Buffer function
 func WorkWithBuffer() error {
-	rawString := "it's esay to encode unicode into a byte array"
+	rawString := "it's easy to encode unicode into a byte array"
 
 	b := Buffer(rawString)
 

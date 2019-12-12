@@ -26,7 +26,7 @@ func Buffer(rawString string) *bytes.Buffer {
 	return b
 }
 
-// ToString is an example of taking an io.Reader
+// toString is an example of taking an io.Reader
 // and consuming it all, then returning a string
 func toString(r io.Reader) (string, error) {
 	b, err := ioutil.ReadAll(r)
