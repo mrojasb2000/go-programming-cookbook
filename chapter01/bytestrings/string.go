@@ -18,7 +18,7 @@ func SearchString() {
 
 	// returns true because s contains the letter a
 	// would also match if it contained b or c
-	fmt.Println(strings.Contains(s, "abc"))
+	fmt.Println(strings.ContainsAny(s, "abc"))
 
 	// returns true because s starts with this
 	fmt.Println(strings.HasPrefix(s, "this"))
