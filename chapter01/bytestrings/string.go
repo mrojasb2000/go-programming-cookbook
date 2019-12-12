@@ -24,7 +24,7 @@ func SearchString() {
 	fmt.Println(strings.HasPrefix(s, "this"))
 
 	// returns true because s ends with this
-	fmt.Println(strings.HasSuffix(s, "this"))
+	fmt.Println(strings.HasSuffix(s, "test"))
 }
 
 // ModifyString modifies a string in a number of ways
