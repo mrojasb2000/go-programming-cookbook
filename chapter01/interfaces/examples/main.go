@@ -3,8 +3,10 @@ package main
 import (
 	"bytes"
 	"fmt"
-}
-func main(
+
+	"github.com/mrojasb2000/go-programming-cookbook/chapter01/interfaces"
+)
+
 func main() {
 	in := bytes.NewReader([]byte("example"))
 	out := &bytes.Buffer{}
