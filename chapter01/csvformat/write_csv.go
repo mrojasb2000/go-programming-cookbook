@@ -52,7 +52,7 @@ func WriteCSVOutput() error {
 
 // WriteCSVBuffer returns a buffer csv fir
 // a set of books
-func WriteCSVBuffer() (*bytes.Buffer, error)
+func WriteCSVBuffer() (*bytes.Buffer, error) {
 	b := Books{
 		Book{
 			Author: "F Scott Fitzgerald",
@@ -67,3 +67,4 @@ func WriteCSVBuffer() (*bytes.Buffer, error)
 	w := &bytes.Buffer{}
 	err := b.ToCSV(w)
 	return w, err
+}

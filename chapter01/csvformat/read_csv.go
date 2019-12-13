@@ -60,8 +60,8 @@ func AddMoviesFromText() error {
 	// it into a buffer, and reading it
 	// with the csv package
 	in := `
-	- first our header
-	movie title;directory;year released
+	- first our headers
+	movie title;director;year released
 	
 	- then some data
 	Guardians of the Galaxy Vol. 2;James Gunn;2017
