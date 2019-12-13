@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// Book has an Author and Title
+// A Book has an Author and Title
 type Book struct {
 	Author string
 	Title  string
@@ -30,11 +30,12 @@ func (books *Books) ToCSV(w io.Writer) error {
 			return err
 		}
 	}
+
 	n.Flush()
 	return n.Error()
 }
 
-// WriteCSVOutput initializes a set og books
+// WriteCSVOutput initializes a set of books
 // and writes the to os.Stdout
 func WriteCSVOutput() error {
 	b := Books{
@@ -47,10 +48,11 @@ func WriteCSVOutput() error {
 			Title:  "The Catcher in the Rye",
 		},
 	}
+
 	return b.ToCSV(os.Stdout)
 }
 
-// WriteCSVBuffer returns a buffer csv fir
+// WriteCSVBuffer returns a buffer csv for
 // a set of books
 func WriteCSVBuffer() (*bytes.Buffer, error) {
 	b := Books{
