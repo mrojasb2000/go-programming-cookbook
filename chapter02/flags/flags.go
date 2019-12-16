@@ -19,7 +19,7 @@ func (c *Config) Setup() {
 	// you can set a flag directly like so:
 	// var someVar = flag.String("flag_name", "default_val",
 	// "description")
-	//but in practice putting it in a struct is generally
+	// but in practice putting it in a struct is generally
 	// better
 
 	// longhand
