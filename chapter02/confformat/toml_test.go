@@ -39,3 +39,36 @@ func TestTOMLData_ToTOML(t *testing.T) {
 		})
 	}
 }
+
+func TestTOMLData_Decode(t *testing.T) {
+	type fields struct {
+		Name string
+		Age int
+	}
+	type args struct {
+		data []byte
+	}
+	tests := []struct {
+		name string
+		fields fields
+		args args
+		wantErr bool
+	}{
+		{"base-case", fields{}, args{[]byte("name = \"Name\"\nage = 9999\n")}, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T){
+			td := &TOMLData{
+				Name: tt.fields.Name,
+				Age: tt.fields.Age,
+			}
+
+			_, err := td.Decode(tt.args.data)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("TOMLData.Decode() error = %v, wantErr %v", err, tt.wantErr)
+				return 
+			}
+		})
+	}
+}
