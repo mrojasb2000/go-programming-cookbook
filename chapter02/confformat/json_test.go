@@ -37,3 +37,34 @@ func TestJSONData_ToJSON(t *testing.T) {
 		})
 	}
 }
+
+
+func TestJSONData_Decode(t *testing.T) {
+	type fields struct {
+		Name string
+		Age int
+	}
+	type args struct {
+		data []byte
+	}
+	tests := []struct {
+		name string
+		fields fields
+		args args
+		wantErr bool
+	}{
+		{"base-case", fields{}, args{[]byte(`{"name":"Someone","age":100}`)}, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T){
+			td := &JSONData{
+				Name: tt.fields.Name,
+				Age: tt.fields.Age,
+			}
+			if err := td.Decode(tt.args.data); (err != nil) != tt.wantErr {
+				t.Errorf("JSONData.Decode() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+}
