@@ -68,3 +68,20 @@ func TestJSONData_Decode(t *testing.T) {
 		})
 	}
 }
+
+func TestOtherJSONExamples(t *testing.T){
+	tests := []struct {
+		name string
+		wantErr bool
+	}{
+		{"base-case", false},
+	}
+
+	for _,tt := range tests {
+		t.Run(tt.name, func(t *testing.T){
+			if err := OtherJSONExamples(); (err != nil) != tt.wantErr {
+				t.Errorf("OtherJSONExamples() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+}
