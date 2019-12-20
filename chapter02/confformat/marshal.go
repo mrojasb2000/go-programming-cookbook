@@ -39,7 +39,7 @@ func MarshalAll() error {
 		return err
 	}
 
-	fmt.Pritln("YAML Marshal =", yamlRes.String())
+	fmt.Println("YAML Marshal =", yamlRes.String())
 
 	return nil
 }

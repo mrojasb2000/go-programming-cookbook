@@ -27,13 +27,13 @@ func UnmarshalAll() error {
 
 	fmt.Println("TOML Unmarshal =", t)
 
-	if _, err := j.Decode([]byte(exampleJSON)); err != nil {
+	if err := j.Decode([]byte(exampleJSON)); err != nil {
 		return err
 	}
 
 	fmt.Println("JSON Unmarshal =", j)
 
-	if _, err := y.Decode([]byte(exampleYAML)); err != nil {
+	if err := y.Decode([]byte(exampleYAML)); err != nil {
 		return err
 	}
 
