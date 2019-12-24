@@ -41,5 +41,5 @@ func (r *ColorText) String() string {
 	if r.TextColor != Black {
 		value += int(r.TextColor)
 	}
-	return fmt.Sprintf("33[0;%dm%s33[0m", value, r.Text)
+	return fmt.Sprintf("\033[0;%dm%s\033[0m", value, r.Text)
 }
