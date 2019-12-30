@@ -46,3 +46,27 @@ func TestIncrementVersion(t *testing.T) {
 		})
 	}
 }
+
+func TestOldVersion(t *testing.T) {
+	type args struct {
+		v  int
+		ws WorkWith
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{"base-case", args{1, WorkWith{"Test", 0}}, false},
+		{"base-case", args{1, WorkWith{"Test", 1}}, true},
+		{"base-case", args{1, WorkWith{"Test", 2}}, true},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := OldVersion(tt.args.v)(tt.args.ws); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("OldVersion = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
