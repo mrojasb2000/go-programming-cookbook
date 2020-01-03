@@ -3,7 +3,7 @@ package structured
 import (
 	"testing"
 
-	//"github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 func TestLogrus(t *testing.T) {
@@ -18,4 +18,28 @@ func TestLogrus(t *testing.T) {
 			Logrus()
 		})
 	}
+}
+
+func TestHook_Fire(t *testing.T) {
+	type args  struct {
+		entry *logrus.Entry
+	}
+	tests := []struct{
+		name string
+		hook *Hook
+		args args
+		wantErr bool
+	}{
+		{"base-case", &Hook{}, args{logrus.NewEntry(&logrus.Logger{})}, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T){
+			hook := &Hook{}
+			if err := hook.Fire(tt.args.entry); (err != nil) != tt.wantErr {
+				t.Errorf("Hook.Fire() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+
 }
