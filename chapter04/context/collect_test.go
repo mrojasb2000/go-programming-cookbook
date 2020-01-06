@@ -1,6 +1,9 @@
 package context
 
-import "testing"
+import (
+	"context"
+	"testing"
+)
 
 func TestInitialize(t *testing.T) {
 	tests := []struct {
@@ -12,6 +15,24 @@ func TestInitialize(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			Initialize()
+		})
+	}
+}
+
+func TestgatherName(t *testing.T) {
+	type args struct {
+		ctx context.Context
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		{"base-case", args{context.Background()}},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T){
+			gatherName(tt.args.ctx)
 		})
 	}
 }
