@@ -19,7 +19,7 @@ func TestInitialize(t *testing.T) {
 	}
 }
 
-func TestgatherName(t *testing.T) {
+func Test_gatherName(t *testing.T) {
 	type args struct {
 		ctx context.Context
 	}
@@ -33,6 +33,24 @@ func TestgatherName(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T){
 			gatherName(tt.args.ctx)
+		})
+	}
+}
+
+func Test_gatherLocation(t *testing.T) {
+	type args struct {
+		ctx context.Context
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		{"base-case", args{context.Background()}},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T){
+			gatherLocation(tt.args.ctx)
 		})
 	}
 }
