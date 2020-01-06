@@ -1,6 +1,7 @@
 package global
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/sirupsen/logrus"
@@ -37,6 +38,28 @@ func TestSetLog(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			SetLog(tt.args.l)
+		})
+	}
+}
+
+func TestWithField(t *testing.T) {
+	type args struct {
+		key   string
+		value interface{}
+	}
+	tests := []struct {
+		name string
+		args args
+		want *logrus.Entry
+	}{
+		{"base-case", args{"test", "case"}, log.WithField("test", "case")},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := WithField(tt.args.key, tt.args.value); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("WithField() = %v, want %v", got, tt.want)
+			}
 		})
 	}
 }
